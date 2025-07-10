@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption App Launcher</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔐</text></svg>">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .button.secondary {
+            background-color: #3498db;
+        }
+        .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid #4CAF50;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        .warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 20px 0;
+        }
+        code {
+            background-color: #f5f5f5;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Encryption App Launcher</h1>
+    
+    <div class="warning">
+        <p><strong>Note:</strong> The project has been reorganized into separate frontend and backend folders. You need to start both services to use the application.</p>
+        <p><strong>Important:</strong> Make sure MongoDB is running before starting the backend server.</p>
+    </div>
+    
+    <h2>Starting the Application</h2>
+    <p>Follow these steps to start the application:</p>
+    
+    <h3>1. Start the Backend Server</h3>
+    <p>Open a terminal and run:</p>
+    <pre><code>cd backend
+npm install
+npm run dev</code></pre>
+    <p>This will start the backend server at <code>http://localhost:5000</code>.</p>
+    
+    <h3>2. Start the Frontend Development Server</h3>
+    <p>Open another terminal and run:</p>
+    <pre><code>cd frontend
+npm install
+npm run dev</code></pre>
+    <p>This will start the frontend development server at <code>http://localhost:5173</code>.</p>
+    
+    <h3>3. Access the Application</h3>
+    <p>Once both servers are running, you can access the application at:</p>
+    <a class="button" href="http://localhost:5173" target="_blank">Open Application</a>
+    
+    <h2>Project Information</h2>
+    <p>This is a full-stack web application for secure encryption and decryption of text and files, featuring user authentication and RSA key pair management.</p>
+    
+    <h3>Features</h3>
+    <ul>
+        <li>User authentication (login/register)</li>
+        <li>Text encryption/decryption</li>
+        <li>File encryption/decryption</li>
+        <li>RSA key pair generation and management</li>
+        <li>Dark/light theme toggle</li>
+        <li>Responsive design</li>
+    </ul>
+    
+    <div class="note">
+        <p>For more information, please refer to the <a href="README.md">README.md</a> file in the project root.</p>
+    </div>
+</body>
+</html>
