@@ -11,10 +11,6 @@ const {
   getKeyPairById,
   deleteKeyPair
 } = require('../controllers/encryptionController');
-const { protect } = require('../middleware/authMiddleware');
-
-// Apply auth middleware to all routes
-router.use(protect);
 
 // Encrypted data routes
 router.post('/data', saveEncryptedText);

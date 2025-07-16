@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
-import { useAuth } from '../context/AuthContext';
 import { FileText, File, Key, Trash2, Download, AlertCircle } from 'lucide-react';
 import api from '../services/api';
 
@@ -24,28 +23,21 @@ interface SavedDataItem {
 
 const SavedData: React.FC = () => {
   const { isDarkMode } = useTheme();
-  const { isAuthenticated } = useAuth();
   const [savedData, setSavedData] = useState<SavedDataItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [activeFilter, setActiveFilter] = useState<'all' | 'text' | 'file' | 'rsa'>('all');
 
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchSavedData();
-    }
-  }, [isAuthenticated, activeFilter]);
+    fetchSavedData();
+  }, [activeFilter]);
 
   const fetchSavedData = async () => {
-    if (!isAuthenticated) return;
-    
     setIsLoading(true);
     setError('');
-    
     try {
       const type = activeFilter !== 'all' ? activeFilter : undefined;
       const response = await api.getEncryptedData(type);
-      // Handle both possible response structures
       setSavedData(Array.isArray(response) ? response : 
                   response.data && Array.isArray(response.data) ? response.data : 
                   response.data && response.data.encryptedData ? response.data.encryptedData : []);
@@ -59,7 +51,6 @@ const SavedData: React.FC = () => {
 
   const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this item?')) return;
-    
     try {
       await api.deleteEncryptedData(id);
       setSavedData(savedData.filter(item => item._id !== id));
@@ -70,19 +61,14 @@ const SavedData: React.FC = () => {
   };
 
   const handleDownload = (item: SavedDataItem) => {
-    // Create a JSON file with the encrypted data
     const dataStr = JSON.stringify(item.data, null, 2);
     const dataBlob = new Blob([dataStr], { type: 'application/json' });
-    
-    // Create a download link
     const url = URL.createObjectURL(dataBlob);
     const a = document.createElement('a');
     a.href = url;
     a.download = `${item.name}.json`;
     document.body.appendChild(a);
     a.click();
-    
-    // Clean up
     URL.revokeObjectURL(url);
     document.body.removeChild(a);
   };
@@ -104,14 +90,6 @@ const SavedData: React.FC = () => {
         return <FileText size={16} />;
     }
   };
-
-  if (!isAuthenticated) {
-    return (
-      <div className={`p-4 rounded-md ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
-        <p className="text-center">Please log in to view your saved data</p>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-4">
@@ -155,7 +133,7 @@ const SavedData: React.FC = () => {
       ) : savedData.length === 0 ? (
         <div className={`p-8 rounded-md text-center ${isDarkMode ? 'bg-gray-800' : 'bg-gray-100'}`}>
           <p className="text-lg">No saved data found</p>
-          <p className={`mt-2 ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+          <p className={`${isDarkMode ? 'text-gray-400' : 'text-gray-600'} mt-2`}>
             Encrypt some data and save it to see it here
           </p>
         </div>
