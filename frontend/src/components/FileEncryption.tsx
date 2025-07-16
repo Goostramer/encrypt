@@ -171,6 +171,7 @@ const FileEncryption: React.FC = () => {
   const switchMode = (newMode: 'encrypt' | 'decrypt') => {
     setMode(newMode);
     clearFile();
+    setPassword(''); // Clear password
     setProgress(0);
     setEncryptedMetadata(null);
   };

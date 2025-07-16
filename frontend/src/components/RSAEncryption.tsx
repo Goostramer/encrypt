@@ -131,7 +131,10 @@ const RSAEncryption: React.FC = () => {
 
   const switchMode = (newMode: 'encrypt' | 'decrypt') => {
     setMode(newMode);
-    setOutputText('');
+    setInputText(''); // Clear input
+    setOutputText(''); // Clear output
+    setPublicKey(''); // Clear public key
+    setPrivateKey(''); // Clear private key
     setError('');
   };
 

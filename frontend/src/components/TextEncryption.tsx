@@ -85,7 +85,9 @@ const TextEncryption: React.FC = () => {
 
   const switchMode = (newMode: 'encrypt' | 'decrypt') => {
     setMode(newMode);
-    setOutputText('');
+    setInputText(''); // Clear input
+    setOutputText(''); // Clear output
+    setPassword(''); // Clear password
     setError('');
   };
 
