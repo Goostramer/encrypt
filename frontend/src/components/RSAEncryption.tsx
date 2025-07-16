@@ -20,7 +20,6 @@ import {
 
 const RSAEncryption: React.FC = () => {
   const { isDarkMode } = useTheme();
-  const [keyPair, setKeyPair] = useState<RSAKeyPair | null>(null);
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const [mode, setMode] = useState<'encrypt' | 'decrypt'>('encrypt');
@@ -38,7 +37,6 @@ const RSAEncryption: React.FC = () => {
     if (savedKeys) {
       try {
         const parsedKeys = JSON.parse(savedKeys) as RSAKeyPair;
-        setKeyPair(parsedKeys);
         setPublicKey(parsedKeys.publicKey);
         setPrivateKey(parsedKeys.privateKey);
       } catch (err) {
@@ -55,7 +53,6 @@ const RSAEncryption: React.FC = () => {
       const cryptoKeyPair = await generateRSAKeyPair(keySize);
       const exportedKeyPair = await exportRSAKeyPair(cryptoKeyPair);
       
-      setKeyPair(exportedKeyPair);
       setPublicKey(exportedKeyPair.publicKey);
       setPrivateKey(exportedKeyPair.privateKey);
       

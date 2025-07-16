@@ -39,25 +39,12 @@ cd backend
 npm install
 ```
 
-Create a `.env` file in the backend directory with the following variables:
-
-```
-PORT=5000
-JWT_SECRET=your_jwt_secret_key_here
-MONGODB_URI=mongodb://localhost:27017/encryption-app
-```
-
 ### 3. Frontend Setup
 
 ```bash
 cd frontend
 npm install
-```
 
-Create a `.env` file in the frontend directory with the following variables:
-
-```
-VITE_API_URL=http://localhost:5000/api
 ```
 
 ## Running the Application
@@ -69,7 +56,7 @@ cd backend
 npm run dev
 ```
 
-This will start the backend server at `http://localhost:5000`.
+
 
 ### 2. Start the Frontend Development Server
 
@@ -78,11 +65,7 @@ cd frontend
 npm run dev
 ```
 
-This will start the frontend development server at `http://localhost:5173`.
-
 ### 3. Access the Application
-
-Once both servers are running, you can access the application at `http://localhost:5173`.
 
 ## Usage
 
