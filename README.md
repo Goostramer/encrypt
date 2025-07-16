@@ -39,20 +39,11 @@ cd backend
 npm install
 ```
 
-Create a `.env` file in the backend directory with the following variables:
-
-
-
 ### 3. Frontend Setup
 
 ```bash
 cd frontend
 npm install
-```
-
-Create a `.env` file in the frontend directory with the following variables:
-
-```
 
 ```
 
@@ -74,11 +65,7 @@ cd frontend
 npm run dev
 ```
 
-This will start the frontend development server at `http://localhost:5173`.
-
 ### 3. Access the Application
-
-Once both servers are running, you can access the application at `http://localhost:5173`.
 
 ## Usage
 
